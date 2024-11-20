@@ -1,15 +1,12 @@
 package com.example.CricBuzz.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.boot.context.properties.bind.DefaultValue;
-
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -31,4 +28,12 @@ public class CricketMatch {
 
     @CreationTimestamp
     Date createdAt;
+
+    @ManyToMany
+            @JoinTable(name = "team_match",
+            joinColumns =
+            @JoinColumn(name = "cricket_match_id"),
+                    inverseJoinColumns = @JoinColumn(name = "team_id")
+            )
+    List<Team> teams;
 }

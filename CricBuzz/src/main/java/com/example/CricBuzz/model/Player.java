@@ -1,9 +1,8 @@
 package com.example.CricBuzz.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.CricBuzz.model.enums.Gender;
+import com.example.CricBuzz.model.enums.Speciality;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -21,9 +20,18 @@ public class Player {
 
     String name;
 
-    int ranks;
+    int age;
 
-    int icc_pnt;
+    @Enumerated(EnumType.STRING)
+    Gender gender;
 
-    String coach;
+    @Enumerated(EnumType.STRING)
+    Speciality speciality;
+
+    @OneToOne(mappedBy = "player", cascade = CascadeType.ALL)
+    PlayerProfile profile;
+
+    @ManyToOne
+    @JoinColumn
+    Team team;
 }

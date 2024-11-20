@@ -26,5 +26,8 @@ public class PlayerProfile {
 
     double bowlingAvg;
 
+    @OneToOne
+    @JoinColumn
+    Player player;
 
 }
