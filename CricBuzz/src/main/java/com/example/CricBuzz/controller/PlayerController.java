@@ -1,20 +1,39 @@
 package com.example.CricBuzz.controller;
 
+import com.example.CricBuzz.dto.request.PlayerRequest;
+import com.example.CricBuzz.dto.response.PlayerResponse;
 import com.example.CricBuzz.model.Player;
+import com.example.CricBuzz.model.enums.Speciality;
 import com.example.CricBuzz.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/player")
 public class PlayerController {
     @Autowired
     PlayerService playerService;
+
     @PostMapping
-    public Player addPlayer(@RequestBody Player player){
-        return playerService.addPlayer(player);
+    public PlayerResponse addPlayer(@RequestBody PlayerRequest playerRequest){
+        return playerService.addPlayer(playerRequest);
+    }
+
+    @GetMapping("/age/{age}")
+    public List<PlayerResponse> getAllByAgeGreaterThan(@PathVariable("age") int age){
+           return playerService.getAllByAgeGreaterThan(age);
+    }
+
+    @GetMapping("/age/{age}/speciality/{speciality}")
+    public  List<PlayerResponse> getAllByAgeGreaterThanAndSpeciality(@PathVariable("age")int age,@PathVariable("speciality") Speciality speciality){
+        return playerService.getAllByAgeGreaterThanAndSpeciality(age,speciality);
+    }
+
+    @GetMapping
+    public Player getPlayer(@RequestParam int playerId){
+        return playerService.getPlayer(playerId);
     }
 }

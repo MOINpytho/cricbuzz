@@ -2,6 +2,8 @@ package com.example.CricBuzz.model;
 
 import com.example.CricBuzz.model.enums.Gender;
 import com.example.CricBuzz.model.enums.Speciality;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -19,7 +21,7 @@ public class Team {
             @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    String name;
+    String teamName;
 
     @Column(name = "ranking", unique = true)
     int ranking;
@@ -29,8 +31,10 @@ public class Team {
     String coach;
 
     @OneToMany(mappedBy = "team")
+    @JsonBackReference
     List<Player> players;
 
     @ManyToMany(mappedBy = "teams")
+    @JsonBackReference
     List<CricketMatch> matches;
 }

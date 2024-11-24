@@ -1,5 +1,7 @@
 package com.example.CricBuzz.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -13,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CricketMatch {
 
@@ -35,5 +38,6 @@ public class CricketMatch {
             @JoinColumn(name = "cricket_match_id"),
                     inverseJoinColumns = @JoinColumn(name = "team_id")
             )
+            @JsonManagedReference
     List<Team> teams;
 }

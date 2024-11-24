@@ -2,6 +2,7 @@ package com.example.CricBuzz.model;
 
 import com.example.CricBuzz.model.enums.Gender;
 import com.example.CricBuzz.model.enums.Speciality;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -28,10 +29,15 @@ public class Player {
     @Enumerated(EnumType.STRING)
     Speciality speciality;
 
+    String email;
+
     @OneToOne(mappedBy = "player", cascade = CascadeType.ALL)
     PlayerProfile profile;
 
+
+
     @ManyToOne
     @JoinColumn
+    @JsonManagedReference
     Team team;
 }
