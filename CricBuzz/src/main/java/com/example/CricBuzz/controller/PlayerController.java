@@ -5,17 +5,21 @@ import com.example.CricBuzz.dto.response.PlayerResponse;
 import com.example.CricBuzz.model.Player;
 import com.example.CricBuzz.model.enums.Speciality;
 import com.example.CricBuzz.service.PlayerService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/player")
+@RequiredArgsConstructor
 public class PlayerController {
-    @Autowired
-    PlayerService playerService;
+
+      final PlayerService playerService = null;
+
+//    public PlayerController(PlayerService playerService) {
+//        this.playerService = playerService;
+//    }
 
     @PostMapping
     public PlayerResponse addPlayer(@RequestBody PlayerRequest playerRequest){
