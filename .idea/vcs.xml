@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/encapsulation-MOINpytho" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/method-overriding-MOINpytho" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/polymorphism-MOINpytho" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vehicles-MOINpytho" vcs="Git" />
+  </component>
+</project>
